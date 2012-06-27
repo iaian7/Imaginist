@@ -177,7 +177,7 @@ function updateFeedback(event) {
 			document.getElementById("feedback").innerHTML = "enlarges illustrations by 200%";
 			break;
 		case 1:	//	smooth exlixer
-			document.getElementById("feedback").innerHTML = "noise and details just dissapear";
+			document.getElementById("feedback").innerHTML = "noise and aliasing just dissapear";
 			break;
 		case 2:	//	contrast potion
 			document.getElementById("feedback").innerHTML = "shadows and highlights that pop";
@@ -252,7 +252,7 @@ for (var i=0; i<uri.length; i++) {
 			break;
 		case 1:
 //			alert("smooth elixer");
-			command = prefLocation+"gmic "+uri[i]+" -to_rgba -repeat 2 -resize 200%,200%,100%,4,3,1 -sharpen 60,1 -smooth 20,0.2,1,1,1.1,0.8,20,2,1 -done -output "+uriParts[i][1]+".scale2.png";
+			command = prefLocation+"gmic "+uri[i]+" -to_rgba -denoise 4,4,4,4,1.5 -repeat 2 -smooth 40,0.4,1,0.6,1.1,0.8,20,2,1 -done -output "+uriParts[i][1]+".smooth.png";
 			widget.system(command, (i+1!=uri.length)?null:endHandler).outputString;
 			break;
 		case 2:

@@ -1,0 +1,106 @@
+gmic
+--denoise 2,4,8 --upscale_smart[-1] 200%,200% [0] -repeat 3 -smooth[-1] 20 -done
+--denoise 2,4,8 --upscale_smart[-1] 200%,200% -repeat 2 -smooth[-1] 40 -done -output Test1.png
+
+gmic /Users/admin/Desktop/JasmineTest/images/JasmineTest2.png -to_rgba -repeat 2 -resize 200%,200%,100%,4,3,1 -sharpen 60,1 -smooth 20,0.2,1,1,1.1,0.8,20,2,1 -done -output Test3alpha-3-12-double.png
+
+gmic JasmineClothing.scale.png -to_rgba -denoise 2,2,8,8,4 -smooth 20,0.2,1,1,1.1,0.8,20,2,1 -output JasmineClothing.scale.smooth.png
+gmic JasmineClothing.png -to_rgba -denoise 2,2,8,8,4 -smooth 20,0.2,1,1,1.1,0.8,20,2,1 -output JasmineClothing.smooth.png
+
+gmic JasmineClothing.png -to_rgba -denoise 4,4,4,4,1.4 -output JasmineClothing.denoise.png
+
+gmic JasmineClothing.png -to_rgba -smooth 20,0.2,1,1,1.1,0.8,20,2,1 -output JasmineClothing.smooth.png
+gmic JasmineClothing.png -to_rgba -repeat 2 -smooth 40,0.4,1,1,1.1,0.8,20,2,1 -done -output JasmineClothing.smooth2.png
+
+gmic JasmineClothing.png -to_rgba -denoise 4,4,4,4,1.5 -repeat 2 -smooth 25,0.5,1,1,1.1,0.8,20,2,1 -done -output JasmineClothing.elixer.png
+gmic JasmineClothing.png -to_rgba -denoise 4,4,4,4,1.5 -repeat 2 -smooth 40,0.4,1,0.6,1.1,0.8,20,2,1 -done -output JasmineClothing.elixer2.png
+
+
+----------------------------------------------------------------------------------------------------
+
+image.jpg -resize2dy 100 --upscale_smart 500%,500% -append x
+image.jpg --denoise 5,5,8
+image.jpg [0] -repeat 3 -smooth 20 -done
+
+----------------------------------------------------------------------------------------------------
+
+    -upscale_smart :
+                          width,_height,_depth,_smoothness>=0,_anisotropy=[0,1],sharpening>=0
+        Upscale selected images with an edge-preserving algorithm.
+        Default values : 'height=100%', 'depth=100%', 'smoothness=2', 'anisotropy=0.4' and 'sharpening=10'.
+Example(s) of use :
+(view)
+image.jpg -resize2dy 100 --upscale_smart 500%,500% -append x
+
+
+
+    -denoise :
+                          std_variation_s>=0,_std_variation_p>=0,_patch_size>=0,_lookup_size>=0,_smoothness,
+                           _fast_approx={ 0 | 1 }
+        Denoise selected images by non-local patch averaging.
+        Default values : 'std_variation_p=10', 'patch_size=5', 'lookup_size=6' and 'smoothness=1'.
+Example(s) of use :
+(view)
+image.jpg --denoise 5,5,8
+
+
+
+    -smooth :
+                          amplitude>=0,_sharpness>=0,_anisotropy,_alpha,_sigma,_dl>0,_da>0,_precision>0,
+                           interpolation,_fast_approx={ 0 | 1 } |
+                          nb_iterations>=0,_sharpness>=0,_anisotropy,_alpha,_sigma,_dt>0,0 |
+                          [tensor_field],_amplitude>=0,_dl>0,_da>0,_precision>0,_interpolation,_fast_approx={ 0 | 1 } |
+                          [tensor_field],_nb_iters>=0,_dt>0,0
+        Smooth selected images anisotropically using diffusion PDE's, with specified field of
+         diffusion tensors.
+        'anisotropy' must be in [0,1].
+        'interpolation' can be { 0=nearest | 1=linear | 2=runge-kutta }.
+        Default values : 'sharpness=0.7', 'anisotropy=0.3', 'alpha=0.6', 'sigma=1.1', 'dl=0.8', 'da=30',
+         'precision=2', 'interpolation=0' and 'fast_approx=1'.
+Example(s) of use :
+(view)
+image.jpg [0] -repeat 3 -smooth[-1] 20 -done
+(view)
+image.jpg 100%,100%,1,2 -rand[-1] -100,100 -repeat 2 -smooth[-1] 100,0.2,1,4,4 -done --warp[0] [-1],1,1
+
+
+
+    -sharpen :
+                          amplitude>=0 |
+                          amplitude>=0,edge>=0,_alpha,_sigma
+        Sharpen selected images by inverse diffusion or shock filters methods.
+        'edge' must be specified to enable shock-filter method.
+        Default values : 'alpha=0' and 'sigma=0'.
+Example(s) of use :
+(view)	 image.jpg --sharpen 300
+(view)	 image.jpg -blur 5 --sharpen[-1] 300,1
+
+----------------------------------------------------------------------------------------------------
+
+    -upscale_smart   width,_height,_depth,_smoothness>=0,_anisotropy=[0,1],sharpening>=0 
+
+        Upscale selected images with an edge-preserving algorithm.
+        Default values : 'height=100%', 'depth=100%', 'smoothness=2', 'anisotropy=0.4' and 'sharpening=10'.
+
+
+
+    -denoise         std_variation_s>=0,_std_variation_p>=0,_patch_size>=0,_lookup_size>=0,_smoothness, 
+                      _fast_approx={ 0 | 1 }
+
+        Denoise selected images by non-local patch averaging.
+        Default values : 'std_variation_p=10', 'patch_size=5', 'lookup_size=6' and 'smoothness=1'.
+
+
+
+    -smooth          amplitude>=0,_sharpness>=0,_anisotropy,_alpha,_sigma,_dl>0,_da>0,_precision>0, 
+                      interpolation,_fast_approx={ 0 | 1 } |
+                     nb_iterations>=0,_sharpness>=0,_anisotropy,_alpha,_sigma,_dt>0,0 |
+                     [tensor_field],_amplitude>=0,_dl>0,_da>0,_precision>0,_interpolation,_fast_approx={ 0 | 1 } |
+                     [tensor_field],_nb_iters>=0,_dt>0,0
+
+        Smooth selected images anisotropically using diffusion PDE's, with specified field of
+         diffusion tensors.
+        'anisotropy' must be in [0,1].
+        'interpolation' can be { 0=nearest | 1=linear | 2=runge-kutta }.
+        Default values : 'sharpness=0.7', 'anisotropy=0.3', 'alpha=0.6', 'sigma=1.1', 'dl=0.8', 'da=30',
+         'precision=2', 'interpolation=0' and 'fast_approx=1'.
