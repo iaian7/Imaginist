@@ -173,25 +173,28 @@ function updateType(event) {
 
 function updateFeedback(event) {
 	switch (prefType) {
-		case 0:	//	magic scale
+		case 0:	//	magic scale (with alpha) - designed for illustrations
 			document.getElementById("feedback").innerHTML = "enlarges illustrations by 200%";
 			break;
-		case 1:	//	smooth exlixer
+		case 1:	//	magic scale (with texture) - designed for photos
+			document.getElementById("feedback").innerHTML = "enlarges photos by 200%";
+			break;
+		case 2:	//	smooth exlixer
 			document.getElementById("feedback").innerHTML = "noise and aliasing just dissapear";
 			break;
-		case 2:	//	contrast potion
+		case 3:	//	contrast potion
 			document.getElementById("feedback").innerHTML = "shadows and highlights that pop";
 			break;
-		case 3:	//	sharpening powder
+		case 4:	//	sharpening powder
 			document.getElementById("feedback").innerHTML = "extra dangerous recursive sharpening";
 			break;
-		case 4:	//	mystic hand
+		case 5:	//	mystic hand
 			document.getElementById("feedback").innerHTML = "transforms a photo into pencil lines";
 			break;
-		case 5:	//	celestial water
+		case 6:	//	celestial water
 			document.getElementById("feedback").innerHTML = "transforms a photo into inky washes";
 			break;
-		case 6:	//	pastel potion
+		case 7:	//	pastel potion
 			document.getElementById("feedback").innerHTML = "transforms a photo into watercolours";
 			break;
 		default://	no settings
@@ -246,28 +249,33 @@ var command = "";
 for (var i=0; i<uri.length; i++) {
 	switch (prefType) {
 		case 0:
-//			alert("magic scale");
+//			alert("magic scale (with alpha)");
 			command = prefLocation+"gmic "+uri[i]+" -to_rgba -resize 200%,200%,100%,4,3,1 -sharpen 60,1 -smooth 20,0.2,1,1,1.1,0.8,20,2,1 -output "+uriParts[i][1]+".scale.png";
 			widget.system(command, (i+1!=uri.length)?null:endHandler).outputString;
 			break;
 		case 1:
+//			alert("magic scale (with texture)");
+			command = prefLocation+"gmic "+uri[i]+" --upscale_smart[0] 200%,200%,100%,32,1,32 --upscale_smart[0] 200%,200%,100%,4,1,24 --upscale_smart[0] 200%,200%,100%,0.5,1,16 --compose_edges[1,2] 16 --compose_edges[3,4] 4 -output[-1] "+uriParts[i][1]+".scale.png";
+			widget.system(command, (i+1!=uri.length)?null:endHandler).outputString;
+			break;
+		case 2:
 //			alert("smooth elixer");
 			command = prefLocation+"gmic "+uri[i]+" -to_rgba -denoise 4,4,4,4,1.5 -repeat 2 -smooth 40,0.4,1,0.6,1.1,0.8,20,2,1 -done -output "+uriParts[i][1]+".smooth.png";
 			widget.system(command, (i+1!=uri.length)?null:endHandler).outputString;
 			break;
-		case 2:
+		case 3:
 //			alert("contrast potion");
 			break;
-		case 3:
+		case 4:
 //			alert("sharpening powder");
 			break;
-		case 4:
+		case 5:
 //			alert("mystic hand");
 			break;
-		case 5:
+		case 6:
 //			alert("celestial water");
 			break;
-		case 6:
+		case 7:
 //			alert("pastel potion");
 			break;
 		default:

@@ -1,0 +1,54 @@
+gmic /Users/admin/Desktop/JasmineTest/images/JasmineTest2.png -to_rgba -repeat 2 -resize 200%,200%,100%,4,3,1 -sharpen 60,1 -smooth 20,0.2,1,1,1.1,0.8,20,2,1 -done -output Test3alpha-3-12-double.png
+
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,2,1,0 -output /Users/admin/Desktop/TianaBackground.upres-1.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,10,1,10 -output /Users/admin/Desktop/TianaBackground.upres-4.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,1,1,8 -output /Users/admin/Desktop/TianaBackground.upres-6.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,2,1,20 -output /Users/admin/Desktop/TianaBackground.upres-7.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,0,1,20 -output /Users/admin/Desktop/TianaBackground.upres-7b.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,1,1,15 -output /Users/admin/Desktop/TianaBackground.upres-8.png
+
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,1,1,12 -output /Users/admin/Desktop/TianaBackground.upres-1.png
+
+
+
+
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,1,1,12 -output /Users/admin/Desktop/TianaBackground.upres-1.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,20,1,16 -output /Users/admin/Desktop/TianaBackground.upres-2.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,128,1,18 -output /Users/admin/Desktop/TianaBackground.upres-3.png
+
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,1,1,14 -output /Users/admin/Desktop/TianaBackground.upres-12.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,8,1,16 -output /Users/admin/Desktop/TianaBackground.upres-16.png
+gmic /Users/admin/Desktop/TianaBackground.png -upscale_smart 200%,200%,100%,128,1,18 -output /Users/admin/Desktop/TianaBackground.upres-18.png
+
+
+gmic /Users/admin/Desktop/TianaBackground.png --upscale_smart[0] 200%,200%,100%,128,1,18 --upscale_smart[0] 200%,200%,100%,8,1,16 --upscale_smart[0] 200%,200%,100%,1,1,14 --compose_average[1,2] --compose_average[3,4] -output[-1] /Users/admin/Desktop/TianaBackground.upres-average.png
+
+gmic /Users/admin/Desktop/TianaBackground.png --upscale_smart[0] 200%,200%,100%,128,1,18 --upscale_smart[0] 200%,200%,100%,8,1,16 --upscale_smart[0] 200%,200%,100%,1,1,14 --compose_edges[1,2] 8 --compose_edges[3,4] 1 -output[-1] /Users/admin/Desktop/TianaBackground.upres-edges.png
+
+gmic /Users/admin/Desktop/TianaBackground.png --upscale_smart[0] 200%,200%,100%,128,1,18 --upscale_smart[0] 200%,200%,100%,4,1,16 --upscale_smart[0] 200%,200%,100%,0,1,14 --compose_average[1,2] --compose_average[3,4] -output[-1] /Users/admin/Desktop/TianaBackground.upres-average-2.png
+
+-compose_average
+-compose_edges smoothness[%]>=0
+
+
+-----
+
+gmic /Users/admin/Desktop/tiger.jpg -upscale_smart 200%,200%,100%,0,1,16 -output /Users/admin/Desktop/tiger.upres-0.png
+gmic /Users/admin/Desktop/tiger.jpg -upscale_smart 200%,200%,100%,2,1,14 -output /Users/admin/Desktop/tiger.upres-1.png
+gmic /Users/admin/Desktop/tiger.jpg -upscale_smart 200%,200%,100%,4,1,16 -output /Users/admin/Desktop/tiger.upres-2.png
+gmic /Users/admin/Desktop/tiger.jpg -upscale_smart 200%,200%,100%,8,1,18 -output /Users/admin/Desktop/tiger.upres-3.png
+gmic /Users/admin/Desktop/tiger.jpg -upscale_smart 200%,200%,100%,32,1,18 -output /Users/admin/Desktop/tiger.upres-4.png
+gmic /Users/admin/Desktop/tiger.jpg -upscale_smart 200%,200%,100%,128,1,18 -output /Users/admin/Desktop/tiger.upres-5.png
+
+
+gmic /Users/admin/Desktop/tiger.jpg --upscale_smart[0] 200%,200%,100%,128,1,18 --upscale_smart[0] 200%,200%,100%,4,1,16 --upscale_smart[0] 200%,200%,100%,0,1,14 --compose_average[1,2] --compose_average[3,4] -output[-1] /Users/admin/Desktop/tiger.upres-average-2.png
+gmic /Users/admin/Desktop/tiger.jpg --upscale_smart[0] 200%,200%,100%,16,1,16 --upscale_smart[0] 200%,200%,100%,2,1,16 --upscale_smart[0] 200%,200%,100%,0,1,16 --compose_average[1,2] --compose_average[3,4] -output[-1] /Users/admin/Desktop/tiger.upres-average-3.png
+gmic /Users/admin/Desktop/tiger.jpg --upscale_smart[0] 200%,200%,100%,0,1,16 --upscale_smart[0] 200%,200%,100%,2,1,16 --upscale_smart[0] 200%,200%,100%,16,1,16 --compose_average[1,2] --compose_average[3,4] -output[-1] /Users/admin/Desktop/tiger.upres-average-4.png
+gmic /Users/admin/Desktop/tiger.jpg --upscale_smart[0] 200%,200%,100%,16,1,32 --upscale_smart[0] 200%,200%,100%,2,1,28 --upscale_smart[0] 200%,200%,100%,0,1,24 --compose_average[1,2] --compose_average[3,4] -output[-1] /Users/admin/Desktop/tiger.upres-average-5.png
+gmic /Users/admin/Desktop/tiger.jpg --upscale_smart[0] 200%,200%,100%,16,1,32 --upscale_smart[0] 200%,200%,100%,2,1,28 --upscale_smart[0] 200%,200%,100%,0,1,24 --compose_edges[1,2] 2 --compose_edges[3,4] 1 -output[-1] /Users/admin/Desktop/tiger.upres-edges-5.png
+gmic /Users/admin/Desktop/tiger.jpg --upscale_smart[0] 200%,200%,100%,32,1,32 --upscale_smart[0] 200%,200%,100%,4,1,24 --upscale_smart[0] 200%,200%,100%,0.5,1,16 --compose_edges[1,2] 16 --compose_edges[3,4] 4 -output[-1] /Users/admin/Desktop/tiger.upres-edges-6.png
+
+-----
+
+gmic /Users/admin/Desktop/TianaBackground.png --upscale_smart[0] 200%,200%,100%,32,1,32 --upscale_smart[0] 200%,200%,100%,4,1,24 --upscale_smart[0] 200%,200%,100%,0.5,1,16 --compose_edges[1,2] 16 --compose_edges[3,4] 4 -output[-1] /Users/admin/Desktop/TianaBackground.upres-edges.png
+

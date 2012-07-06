@@ -24,10 +24,11 @@ var dashcodePartSpecs = {
     "successDetails": { "text": "successDetails", "view": "DC.Text" },
     "successText": { "text": "success", "view": "DC.Text" },
     "text": { "text": "copyrightText", "view": "DC.Text" },
-    "type": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "name": "type", "onchange": "updateType", "options": [["magic scale", "0"], ["smooth elixer", "1"]], "rightImageWidth": 16, "view": "DC.View" },
+    "type": { "creationFunction": "CreatePopupButton", "leftImageWidth": 5, "name": "type", "onchange": "updateType", "options": [["magic scale (with alpha)", "0"], ["magic scale (with texture)", "1"], ["smooth elixer", "2"]], "rightImageWidth": 16, "view": "DC.View" },
     "wrongButton": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showMain", "rightImageWidth": 5, "text": "done", "view": "DC.View" },
     "wrongText": { "text": "wrong", "view": "DC.Text" }
 };
+
 
 
 
